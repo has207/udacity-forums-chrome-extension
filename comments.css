@@ -1,0 +1,26 @@
+#comments-list .short-summary{border-top:1px dotted #ccccce;padding:.5em}
+#comments-list .short-summary:first-of-type{border-top:0}
+#comments-list .short-summary{width:710px}
+#comments-list .short-summary.interesting{background-color:#ffc}
+#comments-list .short-summary h2 a{color:#2a5594;font-size:17px}
+#comments-list .short-summary .userinfo{color:#555753;margin-top:12px;float:right}
+#comments-list .userinfo a{color:#2b538d}
+#comments-list .short-summary .counts{margin-right:0;margin-top:4px;padding-right:2px;width:15em;position:relative}
+#comments-list .short-summary .counts .item-count{font-size:20px;font-weight:bold}
+#comments-list .short-summary .question-summary-wrapper{margin-left:15em;min-height:0}
+#comments-list .short-summary .votes,
+#comments-list .short-summary .status,
+#comments-list .short-summary .views{font-size:12px;height:42px;margin:0 4px 0 0;padding:8px 2px 0;text-align:center;width:52px:float:left;position:absolute;}
+#comments-list .short-summary .status{left:50px}
+#comments-list .short-summary .votes{left:100px}
+#comments-list .short-summary .views{display:inline}
+#comments-list .short-summary .votes,
+.short-summary .views{color:#555753}
+#comments-list .short-summary .favorites{width:24px;text-align:center}
+#comments-list .tags{display:block;line-height:250%;margin-top:12px}
+#comments-list .tags a{background-color:#fff;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;border:2px solid #729fcf;color:#2b538d;font-size:12px;font-weight:normal;padding:2px 6px;text-decoration:none;white-space:nowrap;margin:2px;line-height:16px}
+#comments-list .tags a:hover{background-color:#729fcf;color:#fff}
+#comments-list .counts .answered{background:none repeat scroll 0 0 #e5ebf8;color:#314362}
+#comments-list .counts .answered-accepted{background:none repeat scroll 0 0 #e6f8dd;color:#3a6231}
+#comments-list .counts .unanswered{background:none repeat scroll 0 0 #f3e3e1;color:#6b2b28}
+#comments-list .focusedAnswer{background:#ffc}

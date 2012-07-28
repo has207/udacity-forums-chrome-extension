@@ -1,0 +1,16 @@
+{
+  "name": "Udacity Inline Forums",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "Adds forum posts to Udacity lesson pages.",
+  "permissions": [
+      "http://forums.udacity.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://www.udacity.com/view*"],
+      "js": ["comments.js"],
+      "css": ["comments.css"]
+    }
+  ]
+}
