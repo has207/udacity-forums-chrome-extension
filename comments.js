@@ -53,6 +53,9 @@
       return 'http://forums.udacity.com/' + course + '/tags/' + type + '-' + num + '/';
     };
 
+    // forum links are relative
+    // change them to FQDN and make them open up a new tab instead of taking you off
+    // the video page
     var updateLinks = function(div) {
       var links = div.getElementsByTagName('a');
       for (var i=0; i< links.length; i++) {
@@ -87,12 +90,8 @@
       }
     };
 
-    // wait until the page has loaded enough to show currently active unit
-    var id_ = setInterval(function() {
-      var active = document.getElementsByClassName('active');
-      if (!active.length) return;
-
-      var url = getForumURL(active[0]);
+    var updateForumComments = function(active) {
+      var url = getForumURL(active);
       if (!currentURL || currentURL != url) {
         currentURL = url;
         var comments = document.getElementById('comments-list');
@@ -102,5 +101,23 @@
         xhr.onreadystatechange = onForumResponse;
         xhr.send();
       }
+    };
+
+    // wait until the page has loaded enough to show currently active unit
+    var id_ = setInterval(function() {
+      var active = document.getElementsByClassName('active');
+      if (!active.length) return;
+      clearInterval(id_);
+      delete id_;
+      // once the page finally loaded make the updates trigger on URL changes
+      updateForumComments(active[0]);
+      window.addEventListener('popstate', function() {
+        // need to put this on the execution stack to ensure active is
+        // updated before it runs
+        setTimeout(function() {
+          var active = document.getElementsByClassName('active');
+          if (active.length) updateForumComments(active[0]);
+        }, 0);
+      });
     }, 2000);
 })();

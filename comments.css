@@ -1,4 +1,4 @@
-#comments-list .short-summary{border-top:1px dotted #ccccce;padding:.5em}
+#comments-list .short-summary{border-top:1px dotted #ccccce;padding:5px 0;}
 #comments-list .short-summary:first-of-type{border-top:0}
 #comments-list .short-summary{width:710px}
 #comments-list .short-summary.interesting{background-color:#ffc}
