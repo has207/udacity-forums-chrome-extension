@@ -18,29 +18,33 @@
 
     // figure out if we're dealing with a "unit" or "problem set"
     var getUnitType = function(node) {
-      var name, match;
+      var match;
       var nameNodes = node.parentNode.getElementsByClassName('unit-name');
       if (!nameNodes.length) return;
       var nameNode = nameNodes[0];
       match = nameNode.innerHTML.match(/Unit [0-9]*/);
       if (match && match.length) {
-        name = match[0].replace('Unit ', 'unit');
-      } else {
-        match = nameNode.innerHTML.match(/Problem Set [0-9]*/);
-        if (match && match.length) {
-          name = match[0].replace('Problem Set ', 'ps');
-        } else {
-          // Exam questions tend not to get tagged as consistently as
-          // other units, with "exam", "final_exam", "final" as well as
-          // "ps7-X" all being likely tags. We go with ps7-X as it
-          // lets us actually choose posts for the given problem
-          match = nameNode.innerHTML.match(/Exam/);
-          if (match && match.length) {
-            name = "ps7";
-          }
-        }
+        return match[0].replace('Unit ', 'unit');
       }
-      return name;
+      // Some classes don't include the word Unit in the headings
+      // looking at you st101
+      match = nameNode.innerHTML.match(/[0-9]+\./);
+      if (match && match.length) {
+        return 'unit' + match[0].replace('.', '');
+      }
+      match = nameNode.innerHTML.match(/Problem Set [0-9]*/);
+      if (match && match.length) {
+        return match[0].replace('Problem Set ', 'ps');
+      }
+      // Exam questions tend not to get tagged as consistently as
+      // other units, with "exam", "final_exam", "final" as well as
+      // "ps7-X" all being likely tags. We go with ps7-X as it
+      // lets us actually choose posts for the given problem
+      match = nameNode.innerHTML.match(/Exam/);
+      if (match && match.length) {
+        return "ps7";
+      }
+      return '';
     };
 
     var getForumURL = function(active) {
