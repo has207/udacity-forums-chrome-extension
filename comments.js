@@ -37,12 +37,13 @@
         return match[0].replace('Problem Set ', 'ps');
       }
       // Exam questions tend not to get tagged as consistently as
-      // other units, with "exam", "final_exam", "final" as well as
-      // "ps7-X" all being likely tags. We go with ps7-X as it
+      // other units, with "exam", "final_exam", "final-X" as well as
+      // "ps7-X" all being likely tags. We go with final-X as it
       // lets us actually choose posts for the given problem
+      // and it seems to be used somewhat more often across different classes
       match = nameNode.innerHTML.match(/Exam/);
       if (match && match.length) {
-        return "ps7";
+        return "final";
       }
       return '';
     };

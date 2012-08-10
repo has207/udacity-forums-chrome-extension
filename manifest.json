@@ -1,6 +1,6 @@
 {
   "name": "Udacity Inline Forums",
-  "version": "0.2",
+  "version": "0.3",
   "manifest_version": 2,
   "description": "Displays threads from the forum in context of Udacity lesson pages.",
   "permissions": [
